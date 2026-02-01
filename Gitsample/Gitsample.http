@@ -1,0 +1,6 @@
+@Gitsample_HostAddress = http://localhost:5111
+
+GET {{Gitsample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
