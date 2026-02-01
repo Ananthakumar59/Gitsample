@@ -27,9 +27,9 @@ namespace Gitsample.Controllers
 
         // GET api/<ProductsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Product Get(int id)
         {
-            return "value";
+            return products.Find(x=>x.Id==id);
         }
 
         // POST api/<ProductsController>
