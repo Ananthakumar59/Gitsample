@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Gitsample.Models;
+using Microsoft.AspNetCore.Http.Metadata;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -7,12 +9,20 @@ namespace Gitsample.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
+
     {
+        List<Product> products = new List<Product>();
+        public ProductsController()
+        {
+            products.Add(new Product() { Id = 1, Name = "Laptop", Price = 999.99M, Description = "A high-performance laptop." });
+            products.Add(new Product() { Id = 2, Name = "Smartphone", Price = 499.99M, Description = "A latest model smartphone." });
+            products.Add(new Product() { Id = 3, Name = "Tablet", Price = 299.99M, Description = "A lightweight tablet." });
+        }
         // GET: api/<ProductsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Product> Get()
         {
-            return new string[] { "value1", "value2" };
+            return products.ToList();
         }
 
         // GET api/<ProductsController>/5
